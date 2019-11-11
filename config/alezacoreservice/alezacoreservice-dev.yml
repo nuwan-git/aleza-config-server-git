@@ -1,0 +1,53 @@
+server:
+  port: 9997
+  max-http-header-size: 10000000
+
+management:
+  security:
+    enabled: false
+
+auth-server:
+  url: http://localhost:9999
+
+feign:
+  client:
+    systemservice:
+      url: http://localhost:9999
+    masterdataservice:
+      url: http://localhost:9998
+
+spring:
+  application:
+    name: alezacoreservice
+  mail:
+    default-encoding: UTF-8
+    port: 587
+    protocol: smtp
+    properties:
+      mail:
+  jpa:
+    properties:
+      hibernate:
+        default_schema: aleza
+
+email:
+  template:
+    header: Epic Lanka Technology (pvt)Ltd.
+
+report:
+  path: /home
+
+ribbon:
+  ConnectTimeout: 120000
+  ReadTimeout: 120000
+
+#SLF4J
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: INFO
+    com.enrico.microservices: INFO
+  file:  /tmp/logs/application.log
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
